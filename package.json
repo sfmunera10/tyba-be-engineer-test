@@ -1,0 +1,45 @@
+{
+  "name": "tyba-be-engineer-test",
+  "version": "1.0.0",
+  "description": "Tyba Backend Engineer Test",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon src/main.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfmunera10/tyba-be-engineer-test.git"
+  },
+  "keywords": [
+    "Tyba",
+    "Backend",
+    "API",
+    "REST"
+  ],
+  "author": "sfmunera10",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sfmunera10/tyba-be-engineer-test/issues"
+  },
+  "homepage": "https://github.com/sfmunera10/tyba-be-engineer-test#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.42",
+    "@types/node-fetch": "^2.6.1",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "helmet": "^5.1.0",
+    "mongoose": "^6.3.6",
+    "node-fetch": "^2.6.7"
+  }
+}
