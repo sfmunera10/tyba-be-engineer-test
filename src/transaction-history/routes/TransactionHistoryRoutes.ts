@@ -1,3 +1,5 @@
 import { Router } from "express";
 
-export const TransactionHistoryRoutes = Router();
+const TransactionHistoryRoutes = Router();
+
+export { TransactionHistoryRoutes };
