@@ -1,3 +1,6 @@
+# Mongo DB volumes
+volumes/mongodata
+
 # Logs
 logs
 *.log
