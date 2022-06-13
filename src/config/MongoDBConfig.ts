@@ -8,7 +8,7 @@ let database: mongoose.Connection;
 export const connectToMongo = () => {
   // Add your own uri below, here my dbname is UserDB
   // and we are using the local mongodb
-  const uri = process.env.MONGO_URI || "";
+  const uri = process.env.MONGO_URI!;
 
   if (database) {
     return;

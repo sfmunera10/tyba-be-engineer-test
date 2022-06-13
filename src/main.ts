@@ -6,6 +6,7 @@ import cors from "cors";
 import MainRouter from "./routers/MainRouter";
 import { ErrorHandler } from "./utils";
 import morgan from "morgan";
+import jwt from "jsonwebtoken";
 
 dotenv.config({});
 
@@ -25,6 +26,28 @@ app.use(cors());
 
 //HTTP Request Logging
 app.use(morgan("tiny"));
+
+//Handle auth with JWT Bearer Token for protected routes
+app.use((req: any, __: Response, next: NextFunction) => {
+  if (
+    req.headers &&
+    req.headers.authorization &&
+    req.headers.authorization.split(" ")[0] === "Bearer"
+  ) {
+    jwt.verify(
+      req.headers.authorization.split(" ")[1],
+      process.env.JWT_SIGN_SECRET!,
+      (err: any, decode: any) => {
+        if (err) req.user = undefined;
+        req.user = decode;
+        next();
+      }
+    );
+  } else {
+    req.user = undefined;
+    next();
+  }
+});
 
 // make server app handle any route starting with "/api"
 app.use("/api", MainRouter);

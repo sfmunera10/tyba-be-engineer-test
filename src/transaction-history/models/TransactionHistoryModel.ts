@@ -10,7 +10,7 @@ export enum TxType {
 
 export interface ITransaction extends Document {
   madeByLoggedInUser: boolean;
-  loggedInUserName?: string;
+  userName?: string;
   txType: TxType;
   createdAt: string;
   updatedAt: string;
@@ -21,7 +21,7 @@ const TransactionSchema: Schema = new Schema({
     required: true,
     type: Boolean,
   },
-  loggedInUserName: {
+  userName: {
     default: "-",
     required: false,
     type: String,

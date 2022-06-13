@@ -12,6 +12,7 @@ export interface IUser extends Document {
   familyNames?: string;
   email?: string;
   phoneNumber: string;
+  password: string;
   countryCode: string;
   cityName?: string;
   birthDate?: string;
@@ -31,6 +32,7 @@ const UserSchema: Schema = new Schema({
   },
   email: {
     default: "-",
+    unique: true,
     required: false,
     type: String,
     minlength: 1,
@@ -38,9 +40,14 @@ const UserSchema: Schema = new Schema({
   },
   phoneNumber: {
     required: true,
+    unique: true,
     type: String,
     minlength: 1,
     maxlength: 50,
+  },
+  password: {
+    required: true,
+    type: String,
   },
   countryCode: {
     required: true,
