@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    env_file: ./.env
+    restart: unless-stopped
+    volumes:
+      - ./volumes/mongodata:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD
+    ports:
+      - $LOCALHOST:$MONGO_LOCAL_PORT:$MONGO_LOCAL_PORT
+    networks:
+      - backend
+  backend:
+    depends_on:
+      - mongodb
+    build: ./backend
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $API_REST_PORT:$API_REST_PORT
+    environment:
+      - API_REST_PORT=$API_REST_PORT
+      - MONGO_URI=$MONGO_URI
+    networks:
+      - backend
+volumes:
+  mongodb:
+networks:
+  backend:
