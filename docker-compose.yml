@@ -16,7 +16,7 @@ services:
   backend:
     depends_on:
       - mongodb
-    build: ./backend
+    build: ./
     restart: unless-stopped
     env_file: ./.env
     ports:
@@ -24,6 +24,10 @@ services:
     environment:
       - API_REST_PORT=$API_REST_PORT
       - MONGO_URI=$MONGO_URI
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD
+      - MONGO_DB_NAME=$MONGO_DB_NAME
+      - JWT_SIGN_SECRET=$JWT_SIGN_SECRET
     networks:
       - backend
 volumes:
