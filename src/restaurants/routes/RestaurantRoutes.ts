@@ -1,3 +1,5 @@
 import { Router } from "express";
 
-export const RestaurantRoutes = Router();
+const RestaurantRoutes = Router();
+
+export { RestaurantRoutes };

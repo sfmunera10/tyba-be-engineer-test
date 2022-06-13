@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
-
+import { UserModel } from "../users";
+import { TransactionModel } from "../transaction-history";
+import { RestaurantModel } from "../restaurants";
 
 let database: mongoose.Connection;
 
 export const connectToMongo = () => {
   // Add your own uri below, here my dbname is UserDB
   // and we are using the local mongodb
-  const uri = process.env.MONGO_URI!;
+  const uri = process.env.MONGO_URI || "";
 
   if (database) {
     return;
@@ -35,7 +37,9 @@ export const connectToMongo = () => {
   });
 
   return {
-    //TODO: Add models,
+    UserModel,
+    RestaurantModel,
+    TransactionModel,
   };
 };
 
